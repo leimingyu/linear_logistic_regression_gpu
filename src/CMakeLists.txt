@@ -12,6 +12,10 @@ else()
 	message("CUDA not found, doing something alternatively")
 endif()
 
+# find cublas
+#find_cuda_helper_libs(cublas)
+#set(CUDA_CUBLAS_LIBRARIES ${CUDA_cublas_LIBRARY})
+
 # versose during building
 set(CUDA_VERBOSE_BUILD on)
 
@@ -26,9 +30,9 @@ set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};
 
 # include header files 
 include_directories(
-${CMAKE_CURRENT_SOURCE_DIR}
 /usr/local/cuda/include
 /usr/local/cuda/samples/common/inc
+${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 # libs 
@@ -46,8 +50,15 @@ lr.cu
 target_link_libraries(
 lr
 -lcudart
+${CUDA_cublas_LIBRARY}
 )
 
-#cuda_compile(HELPER_O helper.cu)
 #cuda_compile(DRIVER_O driver.cu OPTIONS -G)
 #cuda_add_executable(driver ${HELPER_O} ${DRIVER_O})
+## add libs
+##CUDA_ADD_LIBRARY(
+#add_library(
+#linear_regression SHARED linear_regression.cc 
+#)
+
+
