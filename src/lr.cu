@@ -43,8 +43,8 @@ int main(int argc, char **argv)
 	uint32 iterations   = 10;
 	float  alpha        = 0.01;
 
-    float cu_alpha      = 1.0f;
-    float cu_beta       = 0.0f;
+	float cu_alpha      = 1.0f;
+	float cu_beta       = 0.0f;
 
 	/// cublas
     cublasStatus_t status;
@@ -159,12 +159,12 @@ int main(int argc, char **argv)
 
 	/// cublas for d_x
 	status = cublasSetMatrix (input_size, 
-	                          feature_size, 
-							  sizeof(float), 
-							  x, 
-							  input_size, 
-							  d_x, 
-							  input_size); 
+							feature_size, 
+							sizeof(float), 
+							x, 
+							input_size, 
+							d_x, 
+							input_size); 
 
 	if (status != CUBLAS_STATUS_SUCCESS) { 
 		printf ("Error : d_x failed to allocate.\n"); 
@@ -175,11 +175,11 @@ int main(int argc, char **argv)
 
 	/// cublas for d_y
 	status = cublasSetVector (input_size, 
-							  sizeof(float), 
-							  y, 
-							  1, 
-							  d_y, 
-							  1); 
+								sizeof(float), 
+								y, 
+								1, 
+								d_y, 
+								1); 
 
 	if (status != CUBLAS_STATUS_SUCCESS) { 
 		printf ("Error : d_y failed to allocate.\n"); 
@@ -190,11 +190,11 @@ int main(int argc, char **argv)
 
 	/// cublas for d_theta
 	status = cublasSetVector (feature_size, 
-							  sizeof(float), 
-							  theta, 
-							  1, 
-							  d_theta, 
-							  1); 
+								sizeof(float), 
+								theta, 
+								1, 
+								d_theta, 
+								1); 
 
 	if (status != CUBLAS_STATUS_SUCCESS) { 
 		printf ("Error : d_theta failed to allocate.\n"); 
@@ -208,6 +208,7 @@ int main(int argc, char **argv)
 	//-----------------------------------------------------------------------//
 	// Gradient Descent
 	//-----------------------------------------------------------------------//
+	printf("\nStart linear regression using gradient descent.\n");
 
 	for(int id = 0; id < iterations; id++)
 	{
@@ -389,6 +390,8 @@ int main(int argc, char **argv)
 		}
 	}
 
+	printf("End linear regression.\n");
+	printf("Exit Program.\n");
 
 
 	// release
