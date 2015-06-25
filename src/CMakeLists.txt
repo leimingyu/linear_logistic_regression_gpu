@@ -12,9 +12,9 @@ else()
 	message("CUDA not found, doing something alternatively")
 endif()
 
-# find cublas
-#find_cuda_helper_libs(cublas)
-#set(CUDA_CUBLAS_LIBRARIES ${CUDA_cublas_LIBRARY})
+### find cublas
+find_cuda_helper_libs(cublas)
+set(CUDA_CUBLAS_LIBRARIES ${CUDA_cublas_LIBRARY})
 
 # versose during building
 set(CUDA_VERBOSE_BUILD on)
