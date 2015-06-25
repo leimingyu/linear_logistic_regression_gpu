@@ -52,13 +52,3 @@ lr
 -lcudart
 ${CUDA_cublas_LIBRARY}
 )
-
-#cuda_compile(DRIVER_O driver.cu OPTIONS -G)
-#cuda_add_executable(driver ${HELPER_O} ${DRIVER_O})
-## add libs
-##CUDA_ADD_LIBRARY(
-#add_library(
-#linear_regression SHARED linear_regression.cc 
-#)
-
-
