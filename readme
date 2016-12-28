@@ -1,4 +1,4 @@
-Linear Regression on GPU, using Gradient Descent
+Linear and Logistic Regression on GPU, using Gradient Descent
 
 Author: Leiming Yu
         ylm@ece.neu.edu
